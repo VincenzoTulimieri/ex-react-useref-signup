@@ -22,10 +22,25 @@ h1{
 .select-number-size{
   grid-column: span 2;
 }
+.form-container>input{
+  padding: 10px;
+}
+textarea{
+  height: 100px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 .button-container{
   grid-column: span 3;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+button{
+  padding: 5px 10px;
+}
+button:hover{
+  cursor: pointer;
 }
