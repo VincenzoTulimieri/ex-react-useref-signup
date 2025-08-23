@@ -9,6 +9,7 @@ h1{
   margin-bottom: 20px;
 }
 
+/* form */
 .form-container{
   max-width: 700px;
   margin: 0 auto;
@@ -43,4 +44,13 @@ button{
 }
 button:hover{
   cursor: pointer;
+}
+
+/* validation */
+
+.red{
+  color: red;
+}
+.green{
+  color: green;
 }
