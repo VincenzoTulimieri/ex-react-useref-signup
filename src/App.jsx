@@ -26,7 +26,15 @@ function App() {
       selectedValue: selectedValue,
       description: description,
     };
-    console.log(formData)
+    
+    if(formData.name === '' || formData.surname ==='' || formData.password === '' || formData.selectedValue === '---' || formData.description === '' || formData.experience < 0){
+      console.log('Inserire i dati')
+      return
+    }else{
+      console.log(formData)
+    }
+
+    
 
   }
 
@@ -37,7 +45,7 @@ function App() {
         <input type="text" placeholder='Nome' className='input-size' value={name} onChange={e => { setName(e.target.value) }} />
         <input type="text" placeholder='Cognome' className='input-size' value={surname} onChange={e => { setSurname(e.target.value) }} />
         <input type="password" placeholder='Password' className='input-size' value={password} onChange={e => { setPassword(e.target.value) }} />
-        <input type="number" placeholder='Esperienza' min={1} className='select-number-size' value={experience} onChange={e => { setExperience(e.target.value) }} />
+        <input type="number" placeholder='Esperienza' className='select-number-size' value={experience} onChange={e => { setExperience(e.target.value) }} />
         <select name="" id="" value={selectedValue} onChange={e => { setSelectedValue(e.target.value) }}>
           <option value="---" className='select-number-size'>---</option>
           {options.map(option => (
