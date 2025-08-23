@@ -4,7 +4,7 @@ import { useState } from 'react'
 function App() {
 
   const [name, setName] = useState('')
-  const [surname, setSurname] = useState('')
+  const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [experience, setExperience] = useState('')
   const [selectedValue, setSelectedValue] = useState('')
@@ -23,14 +23,14 @@ function App() {
     event.preventDefault()
     const formData = {
       name: name,
-      surname: surname,
+      userName: userName,
       password: password,
       experience: experience,
       selectedValue: selectedValue,
       description: description,
     };
 
-    if (formData.name === '' || formData.surname === '' || formData.password === '' || formData.selectedValue === '---' || formData.description === '' || formData.experience < 0) {
+    if (formData.name === '' || formData.userName === '' || formData.password === '' || formData.selectedValue === '---' || formData.description === '' || formData.experience < 0) {
       console.log('Inserire i dati')
       return
     } else {
@@ -62,9 +62,9 @@ function App() {
     <>
       <h1>Inserisci i tuoi dati</h1>
       <form onSubmit={sendData} className='form-container'>
-        <input type="text" placeholder='Nome' className='input-size' value={name} onChange={e => { setName(e.target.value) }} />
-        <strong className={isValid(name) ? 'green' : 'red'}>{isValid(name) ? 'Nome valido' : 'Nome non valido'}</strong>
-        <input type="text" placeholder='Cognome' className='input-size' value={surname} onChange={e => { setSurname(e.target.value) }} />
+        <input type="text" placeholder='Nome e cognome' className='input-size' value={name} onChange={e => { setName(e.target.value) }} />
+        <input type="text" placeholder='Username' className='input-size' value={userName} onChange={e => { setUserName(e.target.value) }} />
+        <strong className={isValid(userName) ? 'green' : 'red'}>{isValid(userName) ? 'Username valido' : 'Username non valido'}</strong>
         <input type="password" placeholder='Password' className='input-size' value={password} onChange={e => { setPassword(e.target.value) }} />
         <input type="number" placeholder='Esperienza' className='select-number-size' value={experience} onChange={e => { setExperience(e.target.value) }} />
         <select name="" id="" value={selectedValue} onChange={e => { setSelectedValue(e.target.value) }}>
