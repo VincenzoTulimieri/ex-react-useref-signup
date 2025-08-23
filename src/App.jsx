@@ -49,7 +49,7 @@ function App() {
       return false
     }
 
-    const letters = "abcdefghijklmnopqrstuvwxyz"
+    const letters = "abcdefghijklmnopqrstuvwxyz0123456789"
     const userNameLetter = userName.toLowerCase().split('')
 
     return userNameLetter.every(l=> letters.includes(l))
