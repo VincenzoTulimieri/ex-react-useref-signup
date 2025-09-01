@@ -16,9 +16,6 @@ function App() {
     { id: 3, value: "Backend" }
   ]
 
-  const numbers = "0123456789"
-  const symbols = `!@#$%^&*()-_=+[]{}|;:'\\",.<>?/~`
-
   function sendData(event) {
     event.preventDefault()
     const formData = {
@@ -39,19 +36,25 @@ function App() {
 
   }
 
-  function isValid(userName) {
-    if (!userName) {
+  function isValidUser(userName) {
+    if (!userName || userName.length < 6) {
       return false
     }
-
-    if (userName.length < 6) {
-      return false
-    }
-
     const lettersAndNumbers = "abcdefghijklmnopqrstuvwxyz0123456789"
     const userNameLetter = userName.toLowerCase().split('')
 
     return userNameLetter.every(element => lettersAndNumbers.includes(element))
+  }
+
+  function isValidPass(password) {
+    if (!password || password.length < 8) {
+      return false
+    }
+    const letters = /[abcdefghijklmnopqrstuvwxyz]/.test(password);
+    const numbers = /[0123456789]/.test(password)
+    const symbols = /[^a-zA-Z0-9]/.test(password)
+
+    return letters && numbers && symbols
   }
 
 
@@ -63,18 +66,21 @@ function App() {
         <input type="text" placeholder='Nome e cognome' className='input-size' value={name} onChange={e => { setName(e.target.value) }} />
 
         <input type="text" placeholder='Username' className='input-size' value={userName} onChange={e => { setUserName(e.target.value) }} />
-        <strong className={isValid(userName) ? 'green' : 'red'}>{isValid(userName) ? 'Username valido' : 'Username non valido'}</strong>
+        <strong className={isValidUser(userName) ? 'green' : 'red'}>{isValidUser(userName) ? 'Username valido' : 'Username non valido'}</strong>
 
-        <input type="password" placeholder='Password' className='input-size' value={password} onChange={e => { setPassword(e.target.value) }} />
+        <input type="text" placeholder='Password' className='input-size' value={password} onChange={e => { setPassword(e.target.value) }} />
+        <strong className={isValidPass(password) ? 'green' : 'red'}>{isValidPass(password) ? 'Password valida' : 'Password non valida'}</strong>
 
-        <input type="number" placeholder='Esperienza' className='select-number-size' value={experience} onChange={e => { setExperience(e.target.value) }} />
+        <div className='select-number-container'>
+          <input type="number" placeholder='Esperienza' value={experience} onChange={e => { setExperience(e.target.value) }} />
 
-        <select name="" id="" value={selectedValue} onChange={e => { setSelectedValue(e.target.value) }}>
-          <option value="---" className='select-number-size'>---</option>
-          {options.map(option => (
-            <option key={option.id} value={option.value}>{option.value}</option>
-          ))}
-        </select>
+          <select name="" id="" value={selectedValue} onChange={e => { setSelectedValue(e.target.value) }}>
+            <option value="---" >---</option>
+            {options.map(option => (
+              <option key={option.id} value={option.value}>{option.value}</option>
+            ))}
+          </select>
+        </div>
 
         <textarea className="input-size" rows="3" placeholder='Descrizione' value={description} onChange={e => { setDescription(e.target.value) }}></textarea>
 
