@@ -32,6 +32,10 @@ function App() {
       return
     } else if (formData.experience < 0 ){
       console.log('Inserire dati corretti, esperienza negativa')
+      return
+    }else if(!isValidUser(formData.userName) || !isValidDescrption(formData.description) || !isValidPass(formData.password)){
+      console.log('Inserire dati corretti')
+      return
     }else {
       console.log(formData)
     }
